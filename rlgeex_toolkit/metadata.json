@@ -1,0 +1,21 @@
+{
+  "author": "",
+  "checksums": {
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "manifests/init.pp": "bebeb8b4a05f9530ba576000e5b678e8",
+    "Modulefile": "91b1bd175d40f21f6916497448fa6c7e",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "tests/init.pp": "ef51337e490eaff4859d64d1ad18b426",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "README.markdown": "95e2913807461e3ceec140111869a57d"
+  },
+  "dependencies": [],
+  "description": "",
+  "license": "",
+  "name": "nicholas-rlgeex_toolkit",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "types": [],
+  "version": "0.1.0"
+}
