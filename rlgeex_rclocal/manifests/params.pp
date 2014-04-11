@@ -6,7 +6,7 @@ class rlgeex_rclocal::params{
       $group        = 'root'
     }
   }
-  
+
   $ifs = delete(split($::interfaces, ','), 'lo')
-  
+ 
 }
