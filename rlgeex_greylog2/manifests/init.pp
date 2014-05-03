@@ -4,7 +4,7 @@
 #
 # Parameters: none
 #
-# Actions:  To install the necessary components for building graylog2
+# Actions:  To install the necessary components for building graylog2, I'm going to see if I can get puppet to compile the software :)
 #
 # Requires: see Modulefile
 #
