@@ -11,7 +11,7 @@
 # Sample Usage:
 #
 class rlgeex_toolkit {
-  $tools = [ "zsh", "htop", "screen", "tmux", "vim", "nano", "tcpdump", "sudo", "perl", "python", "bind-utils", "mlocate", "ntp", "snmp", "xfsprogs", "yum-plugin-priorities", "svn", "nfs-utils", "at", "man", "net-snmp"]    
+  $tools = [ "zsh", "htop", "screen", "tmux", "vim", "nano", "tcpdump", "sudo", "perl", "python", "bind-utils", "mlocate", "snmp", "xfsprogs", "yum-plugin-priorities", "svn", "nfs-utils", "at", "man", "net-snmp"]    
 
   package { $tools: ensure => "installed" }
 
