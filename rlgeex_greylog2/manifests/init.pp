@@ -4,7 +4,7 @@
 #
 # Parameters: none
 #
-# Actions:
+# Actions:  To install the necessary components for building graylog2
 #
 # Requires: see Modulefile
 #
