@@ -1,5 +1,5 @@
 class open-vm-tools {
-  if str2bool('$is_virtual') {
+  if $is_virtual {
     case $operatingsystem {
       'RedHat', 'CentOS': {
         if $operatingsystemmajrelease >= 7 {
