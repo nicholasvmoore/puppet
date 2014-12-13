@@ -8,10 +8,10 @@ class open-vm-tools {
     }
     'Fedora': {
       if $operatingsystemmajrelease >= 19 {
-        package { "open-vm-tools": ensure => "installed" }
-        serivce { "vmtoolsd": 
-          ensure => "running", 
-          enable => "true",
+        package { 'open-vm-tools': ensure => 'installed', }
+        serivce { 'vmtoolsd.service': 
+          ensure => 'running',
+          enable => 'true',
         }
       }
     }
