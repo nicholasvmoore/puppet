@@ -3,16 +3,13 @@ class open-vm-tools {
     'Redhat', 'CentOS': {
       if $operatingsystemmajrelease >= 7 {
         package { "open-vm-tools": ensure => "installed" }
-        serivce { "vmtoolsd": ensure => "running", enable => "true", }
+        service { "vmtoolsd": ensure => "running", enable => "true", }
       }
     }
     'Fedora': {
       if $operatingsystemmajrelease >= 19 {
         package { 'open-vm-tools': ensure => 'installed', }
-        serivce { 'vmtoolsd.service': 
-          ensure => 'running',
-          enable => 'true',
-        }
+        service { 'vmtoolsd': ensure => 'running', enable => 'true', }
       }
     }
   }
