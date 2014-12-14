@@ -22,7 +22,7 @@ class docker-io {
         }
         'RedHat', 'CentOS': {
           if $operatingsystemmajrelease >= 6 {
-            package { 'docker-io': ensure => 'installed', }
+            package { 'docker': ensure => 'installed', }
             service { 'docker': ensure => running, enable => true, }
           }
         }
