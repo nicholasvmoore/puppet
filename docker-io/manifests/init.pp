@@ -30,6 +30,7 @@ class docker-io {
     }
     'Debian': {
       package { 'docker.io': ensure => 'installed', }
+      service { 'docker': ensure => running, enable => true, }
     }
   }
 }
