@@ -1,3 +1,16 @@
+# Class: open-vm-tools
+#
+# This module manages open-vm-tools
+#
+# Parameters: none
+#
+# Actions:
+#
+# Requires: see Modulefile
+#
+# Sample Usage:
+#
+
 class open-vm-tools {
   if $is_virtual {
     case $operatingsystem {
