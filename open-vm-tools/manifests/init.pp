@@ -27,7 +27,7 @@ class open-vm-tools {
         }
       }
       'Ubuntu': {
-        if $operatingsystemmajrelease >= 10.04 {
+        if str2num($operatingsystemmajrelease >= 10.04) {
           package { 'open-vm-tools': ensure => 'installed', }
           service { 'open-vm-tools': ensure => 'running', enable => 'true', }
         }
