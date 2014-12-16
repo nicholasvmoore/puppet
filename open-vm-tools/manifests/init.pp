@@ -28,7 +28,7 @@ class open-vm-tools {
       }
       'Ubuntu': {
         package { 'open-vm-tools': ensure => 'installed', }
-        service { 'open-vm-tools': ensure => 'running', enable => 'true', }
+        service { 'open-vm-tools': enable => 'true', restart => 'true', }
       }
     }
   }
