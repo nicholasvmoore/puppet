@@ -1,4 +1,17 @@
 class docker-couchpotato {
+
+  file { '/mnt/lun0':
+    ensure => 'directory',
+  }
+
+  file { '/mnt/lun0/software':
+    ensure => 'directory',
+  }
+
+  file { '/mnt/lun0/media':
+    ensure => 'directory',
+  }
+
   docker::image { 'nicholasvmoore/docker-couchpotato':
     ensure => 'present',
   }
