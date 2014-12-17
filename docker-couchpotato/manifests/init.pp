@@ -4,8 +4,7 @@ class docker-couchpotato {
   }
   docker::run { 'couchpotato':
     image     => 'docker-couchpotato',
-    ports     => ['5050'],
-    expose    => ['5050'],
-    volumes   => ['/mnt/lun0/media', '/media', '/mnt/lun0/software/docker/movies', 'config'],
+    expose    => ['5050:5050'],
+    volumes   => ['/mnt/lun0/media:/media:rw', '/mnt/lun0/software/docker/movies:/config:rw'],
   }
 }
