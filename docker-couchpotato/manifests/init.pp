@@ -12,6 +12,24 @@ class docker-couchpotato {
     ensure => 'directory',
   }
 
+  fstab { 'mnt-lun-media':
+    source => 'freenas:/mnt/lun0/media',
+    dest   => '/mnt/lun0/media',
+    type   => 'nfs',
+    opts   => 'defaults,noatime',
+    dump   => 0,
+    passno => 0,
+  }
+
+  fstab { 'mnt-lun-software':
+    source => 'freenas:/mnt/lun0/software',
+    dest   => '/mnt/lun0/software',
+    type   => 'nfs',
+    opts   => 'defaults,noatime',
+    dump   => 0,
+    passno => 0,
+  }
+
   docker::image { 'nicholasvmoore/docker-couchpotato':
     ensure => 'present',
   }
