@@ -1,5 +1,3 @@
-require 'tempfile'
-
 module Puppet::Parser::Functions
   newfunction(:validate_augeas, :doc => <<-'ENDHEREDOC') do |args|
     Perform validation of a string using an Augeas lens

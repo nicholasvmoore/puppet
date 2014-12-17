@@ -16,8 +16,9 @@ module Puppet::Parser::Functions
       "given (#{arguments.size} for 1)") if arguments.size < 1
 
     value = arguments[0]
+    klass = value.class
 
-    unless value.is_a?(Array) || value.is_a?(String)
+    unless [Array, String].include?(klass)
       raise(Puppet::ParseError, 'chop(): Requires either an ' +
         'array or string to work with')
     end

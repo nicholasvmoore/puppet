@@ -28,7 +28,7 @@ Will return: ['pa','pb','pc']
 
     if prefix
       unless prefix.is_a?(String)
-        raise Puppet::ParseError, "prefix(): expected second argument to be a String, got #{prefix.inspect}"
+        raise Puppet::ParseError, "prefix(): expected second argument to be a String, got #{suffix.inspect}"
       end
     end
 

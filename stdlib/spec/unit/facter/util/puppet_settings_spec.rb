@@ -1,4 +1,3 @@
-#! /usr/bin/env ruby -S rspec
 require 'spec_helper'
 require 'facter/util/puppet_settings'
 
@@ -11,11 +10,11 @@ describe Facter::Util::PuppetSettings do
       end
 
       it 'should be nil' do
-        expect(subject.with_puppet { Puppet[:vardir] }).to be_nil
+        subject.with_puppet { Puppet[:vardir] }.should be_nil
       end
       it 'should not yield to the block' do
         Puppet.expects(:[]).never
-        expect(subject.with_puppet { Puppet[:vardir] }).to be_nil
+        subject.with_puppet { Puppet[:vardir] }.should be_nil
       end
     end
     context "With Puppet loaded" do
@@ -29,7 +28,7 @@ describe Facter::Util::PuppetSettings do
         subject.with_puppet { Puppet[:vardir] }
       end
       it 'should return the nodes vardir' do
-        expect(subject.with_puppet { Puppet[:vardir] }).to eq vardir
+        subject.with_puppet { Puppet[:vardir] }.should eq vardir
       end
     end
   end

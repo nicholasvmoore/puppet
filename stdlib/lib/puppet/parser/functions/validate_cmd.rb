@@ -1,5 +1,4 @@
 require 'puppet/util/execution'
-require 'tempfile'
 
 module Puppet::Parser::Functions
   newfunction(:validate_cmd, :doc => <<-'ENDHEREDOC') do |args|
@@ -33,7 +32,6 @@ module Puppet::Parser::Functions
     tmpfile = Tempfile.new("validate_cmd")
     begin
       tmpfile.write(content)
-      tmpfile.close
       if Puppet::Util::Execution.respond_to?('execute')
         Puppet::Util::Execution.execute("#{checkscript} #{tmpfile.path}")
       else
@@ -41,9 +39,6 @@ module Puppet::Parser::Functions
       end
     rescue Puppet::ExecutionFailure => detail
       msg += "\n#{detail}"
-      raise Puppet::ParseError, msg
-    rescue Exception => detail
-      msg += "\n#{detail.class.name} #{detail}"
       raise Puppet::ParseError, msg
     ensure
       tmpfile.unlink
