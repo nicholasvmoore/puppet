@@ -19,6 +19,7 @@ class docker-couchpotato {
     opts   => 'defaults,noatime',
     dump   => 0,
     passno => 0,
+    ensure => 'present',
   }
 
   fstab { 'mnt-lun-software':
