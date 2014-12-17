@@ -25,7 +25,7 @@ has_interface_with("lo")                        => true
     interfaces = lookupvar('interfaces')
 
     # If we do not have any interfaces, then there are no requested attributes
-    return false if (interfaces == :undefined || interfaces.nil?)
+    return false if (interfaces == :undefined)
 
     interfaces = interfaces.split(',')
 
@@ -35,29 +35,13 @@ has_interface_with("lo")                        => true
 
     kind, value = args
 
-    # Bug with 3.7.1 - 3.7.3  when using future parser throws :undefined_variable
-    # https://tickets.puppetlabs.com/browse/PUP-3597
-    factval = nil
-    catch :undefined_variable do
-      factval = lookupvar(kind)
-    end
-    if factval == value
+    if lookupvar(kind) == value
       return true
     end
 
     result = false
     interfaces.each do |iface|
-      iface.downcase!
-      factval = nil
-      begin
-        # Bug with 3.7.1 - 3.7.3 when using future parser throws :undefined_variable
-        # https://tickets.puppetlabs.com/browse/PUP-3597
-        catch :undefined_variable do
-          factval = lookupvar("#{kind}_#{iface}")
-        end
-      rescue Puppet::ParseError # Eat the exception if strict_variables = true is set
-      end
-      if value == factval
+      if value == lookupvar("#{kind}_#{iface}")
         result = true
         break
       end
