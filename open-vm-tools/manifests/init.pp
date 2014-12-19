@@ -17,12 +17,18 @@ class open-vm-tools {
       'RedHat', 'CentOS': {
         case $operatingsystemmajrelease {
           '6': {
-            package { "open-vm-tools": ensure => "installed", }
-            service { "vmtoolsd": ensure => "running", enable => "true", }
+            package { 'open-vm-tools':
+              ensure => 'installed',
+              before => service['vmtoolsd']
+            }
+            service { 'vmtoolsd':
+              ensure => 'running',
+              enable => 'true',
+            }
           }
           '7': {
-            package { "open-vm-tools": ensure => "installed", }
-            service { "vmtoolsd": ensure => "running", enable => "true", }
+            package { 'open-vm-tools': ensure => 'installed', }
+            service { 'vmtoolsd': ensure => 'running', enable => 'true', }
           }
         }
       }
