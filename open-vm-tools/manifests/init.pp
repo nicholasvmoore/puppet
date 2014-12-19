@@ -15,9 +15,15 @@ class open-vm-tools {
   if $is_virtual {
     case $operatingsystem {
       'RedHat', 'CentOS': {
-        if versioncmp($::operatingsystemrelease, '6.5') < 0 {
-          package { "open-vm-tools": ensure => "installed", }
-          service { "vmtoolsd": ensure => "running", enable => "true", }
+        case $operatingsystemmajrelease {
+          '6': {
+            package { "open-vm-tools": ensure => "installed", }
+            service { "vmtoolsd": ensure => "running", enable => "true", }
+          }
+          '7': {
+            package { "open-vm-tools": ensure => "installed", }
+            service { "vmtoolsd": ensure => "running", enable => "true", }
+          }
         }
       }
       'Fedora': {
