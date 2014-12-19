@@ -47,5 +47,5 @@ class docker-couchpotato {
     volumes   => ['/mnt/lun0/media:/media:rw', '/mnt/lun0/software/docker/movies:/config:rw'],
   }
 
-  fstab['mnt-lun0-media'] -> fstab['mnt-lun0-software'] -> file['/mnt/lun0'] -> file['/mnt/lun0/media'] -> file['/mnt/lun0/software'] -> mount['/mnt/lun0/media'] -> mount['/mnt/lun0/software'] -> docker::image['couchpotato'] -> docker::run['couchpotato']
+  fstab['mnt-lun0-media'] -> fstab['mnt-lun0-software'] -> file['/mnt/lun0'] -> file['/mnt/lun0/media'] -> file['/mnt/lun0/software'] -> mount['/mnt/lun0/media'] -> mount['/mnt/lun0/software'] -> docker::image['nicholasvmoore/docker-couchpotato'] -> docker::run['couchpotato']
 }
