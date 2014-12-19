@@ -1,6 +1,6 @@
 class docker-couchpotato {
 
-  fstab { 'mnt-lun-media':
+  fstab { 'mnt-lun0-media':
     source => 'freenas:/mnt/lun0/media',
     dest   => '/mnt/lun0/media',
     type   => 'nfs',
@@ -9,7 +9,7 @@ class docker-couchpotato {
     passno => 0,
   }
 
-  fstab { 'mnt-lun-software':
+  fstab { 'mnt-lun0-software':
     source => 'freenas:/mnt/lun0/software',
     dest   => '/mnt/lun0/software',
     type   => 'nfs',
@@ -40,4 +40,6 @@ class docker-couchpotato {
     ports    => ['5050:5050'],
     volumes   => ['/mnt/lun0/media:/media:rw', '/mnt/lun0/software/docker/movies:/config:rw'],
   }
+
+  fstab['mnt-lun0-media'] -> fstab['mnt-lun0-software'] -> file['/mnt/lun0'] -> file['/mnt/lun0/media'] -> file['/mnt/lun0/software'] -> docker::image['couchpotato'] -> docker::run['couchpotato']
 }
