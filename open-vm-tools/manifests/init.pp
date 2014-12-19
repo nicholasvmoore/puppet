@@ -40,13 +40,25 @@ class open-vm-tools {
       }
       'Fedora': {
         if $operatingsystemmajrelease >= 19 {
-          package { 'open-vm-tools': ensure => 'installed', }
-          service { 'vmtoolsd': ensure => 'running', enable => 'true', }
+          package { 'open-vm-tools':
+            ensure => 'installed',
+          }
+          service { 'vmtoolsd':
+            ensure => 'running',
+            enable => 'true',
+          }
+          package['open-vm-tools'] -> service['vmtoolsd']
         }
       }
       'Ubuntu': {
-        package { 'open-vm-tools': ensure => 'installed', }
-        service { 'open-vm-tools': enable => 'true', restart => 'true', }
+        package { 'open-vm-tools':
+          ensure => 'installed',
+        }
+        service { 'open-vm-tools':
+          ensure => 'running',
+          enable => 'true',
+        }
+        package['open-vm-tools'] -> service['vmtoolsd']
       }
     }
   }
