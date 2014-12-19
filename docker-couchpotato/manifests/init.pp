@@ -1,17 +1,5 @@
 class docker-couchpotato {
 
-  file { '/mnt/lun0':
-    ensure => 'directory',
-  }
-
-  file { '/mnt/lun0/software':
-    ensure => 'directory',
-  }
-
-  file { '/mnt/lun0/media':
-    ensure => 'directory',
-  }
-
   fstab { 'mnt-lun-media':
     source => 'freenas:/mnt/lun0/media',
     dest   => '/mnt/lun0/media',
@@ -28,6 +16,20 @@ class docker-couchpotato {
     opts   => 'defaults,noatime',
     dump   => 0,
     passno => 0,
+  }
+
+  file { '/mnt/lun0':
+    ensure => 'directory',
+  }
+
+  file { '/mnt/lun0/software':
+    ensure => 'directory',
+    ensure => mounted,
+  }
+
+  file { '/mnt/lun0/media':
+    ensure => 'directory',
+    ensure => mounted,
   }
 
   docker::image { 'nicholasvmoore/docker-couchpotato':
