@@ -21,5 +21,5 @@ class rlgeex_toolkit {
     }
   }
   package { $tools: ensure => 'installed' }
-  package { $remove_tools ensure => 'purged' }
+  package { $remove_tools: ensure => 'purged' }
 }
