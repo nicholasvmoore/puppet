@@ -19,12 +19,12 @@ class open-vm-tools {
           '6': {
             package { 'open-vm-tools':
               ensure => 'installed',
-              before => service['vmtoolsd']
             }
             service { 'vmtoolsd':
               ensure => 'running',
               enable => 'true',
             }
+            package['open-vm-tools'] -> service['vmtoolsd']
           }
           '7': {
             package { 'open-vm-tools': ensure => 'installed', }
